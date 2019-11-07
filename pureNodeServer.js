@@ -13,6 +13,14 @@ handler = (req, res) => {
 		res.writeHead(200, { "Content-type": "text/plain" });
 		res.write(new Date().toDateString());
 		return res.end();
+	} else if (parsedUrl.pathname === "/hello") {
+		const name = parsedUrl.query.name;
+		if (!name) {
+			res.writeHead(400, { "Content-type": "text/plain" });
+			return res.end();
+		}
+		res.write(`Hello ${name}`);
+		return res.end();
 	} else {
 		res.writeHead(404, { "Content-type": "text/plain" });
 		return res.end();

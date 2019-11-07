@@ -8,10 +8,14 @@ handler = (req, res) => {
 	if (parsedUrl.pathname === "/") {
 		res.writeHead(200, { "Content-type": "text/plain" });
 		res.write("Hello, I am a web server");
-		res.end();
+		return res.end();
+	} else if (parsedUrl.pathname === "/time") {
+		res.writeHead(200, { "Content-type": "text/plain" });
+		res.write(new Date().toDateString());
+		return res.end();
 	} else {
 		res.writeHead(404, { "Content-type": "text/plain" });
-		res.end();
+		return res.end();
 	}
 };
 

@@ -1,4 +1,5 @@
 const express = require("express");
+const createError = require("http-errors");
 const path = require("path");
 
 const app = express();
@@ -18,8 +19,16 @@ app.get("/favico", (req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  next(createErr)
-})
+  return next(createError(404, "File not found"));
+});
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  res.locals.status = status;
+  res.locals.message = err.message;
+  res.status(status);
+  // res.locals.error = req.app.get("env") === "development" ? err : {};
+  return res.render("error");
+});
 app.listen(3000, () => {
   console.log("I am an express server listening in port 3000");
 });

@@ -10,5 +10,7 @@ head
   .notfound
     .notfound-404
       h1 Oops!
-      h2=status+ message
+      h2=status + message
+      if(error)
+        pre= error.stack
     a(href='#') Go TO Homepage

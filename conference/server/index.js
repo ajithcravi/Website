@@ -16,6 +16,10 @@ app.use("/", routes());
 app.get("/favico", (req, res, next) => {
   res.sendStatus(204);
 });
+
+app.use((req, res, next) => {
+  next(createErr)
+})
 app.listen(3000, () => {
   console.log("I am an express server listening in port 3000");
 });

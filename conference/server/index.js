@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use("/", routes());
 
 app.get("/favico", (req, res, next) => {
-  res.sendStatus(204);
+  return res.sendStatus(204);
 });
 
 app.use((req, res, next) => {
@@ -23,10 +23,10 @@ app.use((req, res, next) => {
 });
 app.use((err, req, res, next) => {
   const status = err.status || 500;
+  res.status(status);
   res.locals.status = status;
   res.locals.message = err.message;
-  res.status(status);
-  // res.locals.error = req.app.get("env") === "development" ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
   return res.render("error");
 });
 app.listen(3000, () => {

@@ -6,12 +6,13 @@ const configs = require("./config");
 const app = express();
 
 config = configs[app.get("env")];
-
 app.set("view engine", "pug");
 if (app.get("env") === "development") {
   app.locals.pretty = true;
 }
 app.set("views", path.join(__dirname, "./views"));
+``
+app.locals.title = config.title;
 
 const routes = require("./routes");
 app.use(express.static("public"));

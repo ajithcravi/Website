@@ -6,7 +6,9 @@ const feedback = require("./feedback/feedback");
 
 module.exports = () => {
   router.get("/", (req, res, next) => {
-    return res.render("index");
+    return res.render("index", {
+      page: "Home"
+    });
   });
 
   router.use("/speakers", speakers());

@@ -3,6 +3,6 @@ module.exports = {
     title: "Roux Meetups"
   },
   development: {
-    titel: "Roux Meetups (Dev)"
-  }
+    title: "Roux Meetups (Dev)"
+  },
 };

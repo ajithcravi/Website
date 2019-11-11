@@ -7,7 +7,7 @@ module.exports = () => {
   });
 
   router.get("/:name", (req, res, next) => {
-    return res.send(`Profile of the speaker ${req.params.name}`);
+    return res.render("speakers/details");
   });
 
   return router;
